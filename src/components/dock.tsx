@@ -55,9 +55,13 @@ export function Dock() {
                 ) : null}
                 <motion.span
                   className="relative z-10 flex flex-col items-center gap-1"
-                  whileHover={reduced ? undefined : { y: -3 }}
-                  whileTap={reduced ? undefined : { scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 420, damping: 24 }}
+                  {...(reduced
+                    ? {}
+                    : {
+                        whileHover: { y: -3 },
+                        whileTap: { scale: 0.92 },
+                        transition: { type: "spring" as const, stiffness: 420, damping: 24 },
+                      })}
                 >
                   <Icon className="size-5" strokeWidth={active ? 2.4 : 1.9} aria-hidden="true" />
                   <span>{item.label}</span>

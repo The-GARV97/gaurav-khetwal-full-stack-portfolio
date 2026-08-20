@@ -51,7 +51,7 @@ export function TopBar() {
               key={mounted ? theme : "placeholder"}
               initial={reduced ? false : { rotate: -70, opacity: 0, scale: 0.7 }}
               animate={{ rotate: 0, opacity: 1, scale: 1 }}
-              exit={reduced ? undefined : { rotate: 70, opacity: 0, scale: 0.7 }}
+              {...(reduced ? {} : { exit: { rotate: 70, opacity: 0, scale: 0.7 } })}
               transition={{ duration: 0.22 }}
               className="flex"
             >
