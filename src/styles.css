@@ -164,8 +164,8 @@
   background-image: linear-gradient(
     100deg,
     var(--foreground) 0%,
-    var(--primary) 55%,
-    var(--accent) 100%
+    var(--primary) 58%,
+    color-mix(in oklab, var(--accent) 72%, var(--foreground)) 100%
   );
   background-clip: text;
   color: transparent;
