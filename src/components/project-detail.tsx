@@ -156,7 +156,10 @@ export function ProjectDetail({
             </div>
 
             <div className="flex flex-wrap gap-3 border-t border-border/60 p-5 sm:p-7">
-              <NeuButton variant="primary" asChild={false} onClick={() => window.open(project.demoUrl, "_blank", "noopener")}>
+              <NeuButton
+                variant="primary"
+                onClick={() => window.open(project.demoUrl, "_blank", "noopener")}
+              >
                 Live demo
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </NeuButton>
