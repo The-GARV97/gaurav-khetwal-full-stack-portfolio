@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GK developer mark">
+  <style>
+    :root {
+      --base: #e8edf3;
+      --edge: #ffffff;
+      --ink: #20242c;
+      --accent: #6d5dfc;
+      --track: #b8c0cb;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --base: #181b21;
+        --edge: #343942;
+        --ink: #f7f8fb;
+        --accent: #9b8cff;
+        --track: #4a505b;
+      }
+    }
+
+    .orbit {
+      transform-origin: 32px 32px;
+      animation: orbit 4.8s linear infinite;
+    }
+
+    .signal {
+      animation: signal 2.4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes orbit {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes signal {
+      50% { opacity: .55; transform: scale(.72); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orbit, .signal { animation: none; }
+    }
+  </style>
+
+  <rect x="5" y="5" width="54" height="54" rx="17" fill="var(--base)" stroke="var(--edge)" stroke-width="2"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="var(--track)" stroke-width="1" stroke-dasharray="3 5" opacity=".75"/>
+  <g class="orbit">
+    <circle class="signal" cx="32" cy="8" r="3.5" fill="var(--accent)"/>
+  </g>
+  <text x="32" y="39" fill="var(--ink)" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="-2" text-anchor="middle">GK</text>
+  <path d="M20 47h24" fill="none" stroke="var(--accent)" stroke-linecap="round" stroke-width="2.5"/>
+</svg>

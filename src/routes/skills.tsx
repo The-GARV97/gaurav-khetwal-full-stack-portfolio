@@ -46,8 +46,8 @@ function SkillsScreen() {
     <Page>
       <SectionHeading
         eyebrow="Skills"
-        title="A capability map, not a scoreboard."
-        lead="Percentages on a bar never told anyone anything. Here is what each area actually involves in practice."
+        title="Engineering capability from interface to infrastructure."
+        lead="The stack covers modern frontend work, Laravel backends, enterprise workflows, relational data, commerce systems and production delivery."
       />
 
       <motion.div

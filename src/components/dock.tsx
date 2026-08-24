@@ -26,7 +26,7 @@ export function Dock() {
         initial={reduced ? false : { y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.15 }}
-        className="pointer-events-auto relative flex items-end gap-1 rounded-full p-1.5 neu-lg gradient-stroke sm:gap-1.5 sm:p-2"
+        className="pointer-events-auto flex items-end gap-1 rounded-[1.75rem] bg-background/95 p-2 neu-lg backdrop-blur-xl sm:gap-2 sm:p-2.5"
       >
         {navItems.map((item) => {
           const Icon = icons[item.icon];
@@ -38,37 +38,20 @@ export function Dock() {
                 aria-label={item.label}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group relative flex h-13 w-14 flex-col items-center justify-center gap-1 rounded-full text-[10px] font-medium tracking-tight transition-colors neu-focus sm:h-14 sm:w-[4.5rem] sm:text-[11px]",
-                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                  "group relative flex h-14 w-14 flex-col items-center justify-center gap-1 rounded-2xl text-[10px] font-medium tracking-tight transition-colors neu-focus sm:h-16 sm:w-[4.5rem] sm:text-[11px]",
+                  active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {active ? (
-                  <>
-                    <motion.span
-                      layoutId="dock-active"
-                      transition={
-                        reduced ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }
-                      }
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, color-mix(in oklab, var(--grad-cyan) 32%, transparent), color-mix(in oklab, var(--grad-violet) 34%, transparent) 55%, color-mix(in oklab, var(--grad-magenta) 30%, transparent))",
-                        boxShadow:
-                          "0 0 30px -6px color-mix(in oklab, var(--grad-violet) 75%, transparent), inset 0 0 0 1px var(--glass-stroke-strong)",
-                      }}
-                    />
-                    <motion.span
-                      layoutId="dock-glow"
-                      transition={
-                        reduced ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }
-                      }
-                      className="absolute -bottom-1 h-1.5 w-8 rounded-full blur-[3px]"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, var(--grad-cyan), var(--grad-magenta))",
-                      }}
-                    />
-                  </>
+                  <motion.span
+                    layoutId="dock-active"
+                    transition={
+                      reduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 420, damping: 34 }
+                    }
+                    className="absolute inset-0 rounded-2xl bg-background neu-inset"
+                  />
                 ) : null}
                 <motion.span
                   className="relative z-10 flex flex-col items-center gap-1"
@@ -80,9 +63,18 @@ export function Dock() {
                         transition: { type: "spring" as const, stiffness: 420, damping: 24 },
                       })}
                 >
-                  <Icon className="size-5" strokeWidth={active ? 2.3 : 1.8} aria-hidden="true" />
+                  <Icon className="size-5" strokeWidth={active ? 2.4 : 1.9} aria-hidden="true" />
                   <span>{item.label}</span>
                 </motion.span>
+                {active ? (
+                  <motion.span
+                    layoutId="dock-dot"
+                    transition={
+                      reduced ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }
+                    }
+                    className="absolute -bottom-0.5 z-10 h-1 w-1 rounded-full bg-primary"
+                  />
+                ) : null}
               </Link>
             </li>
           );

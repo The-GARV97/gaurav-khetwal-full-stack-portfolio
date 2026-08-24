@@ -89,9 +89,6 @@ function ContactScreen() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 font-mono text-[10px] text-muted-foreground">
-              All contact details are placeholders — edit src/data/portfolio.ts
-            </p>
           </motion.div>
         </motion.aside>
       </div>

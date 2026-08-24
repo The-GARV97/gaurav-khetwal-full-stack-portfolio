@@ -15,19 +15,19 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Gaurav Khetwal is a full-stack developer who turns complex problems into clear, useful software — from data model to interface.",
+          "Gaurav Khetwal builds custom web applications, enterprise platforms, e-commerce systems, SaaS products and REST APIs from interface to production.",
       },
       { property: "og:title", content: "Gaurav Khetwal — Full-Stack Developer" },
       {
         property: "og:description",
-        content: "Full-stack developer turning complex problems into clear, useful software.",
+        content: "Full-stack developer building complete custom software systems.",
       },
     ],
   }),
   component: HomeScreen,
 });
 
-const highlights = ["TypeScript", "React", "Node.js", "PostgreSQL", "Edge deploys"];
+const highlights = ["Laravel", "PHP", "React", "Next.js", "Angular", "MySQL"];
 
 function HomeScreen() {
   const { container, item } = useStagger(0.05);

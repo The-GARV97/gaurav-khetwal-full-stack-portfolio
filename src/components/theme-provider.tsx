@@ -8,18 +8,21 @@ const ThemeContext = createContext<{
   theme: Theme;
   toggleTheme: () => void;
   mounted: boolean;
-}>({ theme: "dark", toggleTheme: () => {}, mounted: false });
+}>({ theme: "light", toggleTheme: () => {}, mounted: false });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Deep-space is the signature look, so dark is the default.
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    let next: Theme = "dark";
+    let next: Theme = "light";
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "light" || stored === "dark") next = stored;
+      if (stored === "light" || stored === "dark") {
+        next = stored;
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        next = "dark";
+      }
     } catch {
       /* storage unavailable */
     }
@@ -29,10 +32,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!mounted) return;
-    const root = document.documentElement;
-    root.classList.toggle("light", theme === "light");
-    root.classList.toggle("dark", theme === "dark");
-    root.style.colorScheme = theme;
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.style.colorScheme = theme;
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch {

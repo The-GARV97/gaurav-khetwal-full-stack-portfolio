@@ -36,7 +36,11 @@ function AboutScreen() {
 
   return (
     <Page>
-      <SectionHeading eyebrow="About" title="Developer, product thinker, problem solver." lead={about.intro} />
+      <SectionHeading
+        eyebrow="About"
+        title="Full-stack engineer, business problem solver, production builder."
+        lead={about.intro}
+      />
 
       <motion.div
         variants={container}

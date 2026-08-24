@@ -95,6 +95,15 @@ export function ProjectDetail({
             </div>
 
             <div className="overflow-y-auto p-5 sm:p-7">
+              {project.image ? (
+                <figure className="mb-6 overflow-hidden rounded-2xl bg-muted neu-inset">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} website preview`}
+                    className="aspect-video w-full object-cover"
+                  />
+                </figure>
+              ) : null}
               <p className="text-base text-pretty">{project.description}</p>
 
               <dl className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -137,7 +146,7 @@ export function ProjectDetail({
 
               <section className="mt-6">
                 <h3 className="font-mono text-[11px] tracking-widest text-primary uppercase">
-                  Screenshots
+                  Project surfaces
                 </h3>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {project.screenshots.map((shot) => (
@@ -158,18 +167,24 @@ export function ProjectDetail({
             <div className="flex flex-wrap gap-3 border-t border-border/60 p-5 sm:p-7">
               <NeuButton
                 variant="primary"
+                disabled={project.demoUrl === "#"}
                 onClick={() => window.open(project.demoUrl, "_blank", "noopener")}
               >
                 Live demo
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </NeuButton>
-              <NeuButton onClick={() => window.open(project.sourceUrl, "_blank", "noopener")}>
+              <NeuButton
+                disabled={project.sourceUrl === "#"}
+                onClick={() => window.open(project.sourceUrl, "_blank", "noopener")}
+              >
                 <Github className="size-4" aria-hidden="true" />
                 Source code
               </NeuButton>
-              <p className="w-full font-mono text-[11px] text-muted-foreground">
-                Links are placeholders — replace them in src/data/portfolio.ts
-              </p>
+              {project.demoUrl === "#" && project.sourceUrl === "#" ? (
+                <p className="w-full font-mono text-[11px] text-muted-foreground">
+                  Private project — public links are not available.
+                </p>
+              ) : null}
             </div>
           </motion.div>
         </div>
